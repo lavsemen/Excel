@@ -37,7 +37,7 @@ module.exports = {
     filename: fileName('js'),
     path: path.resolve(__dirname, 'dist')
   },
-  resolve:{
+  resolve: {
     extensions: ['.js'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
