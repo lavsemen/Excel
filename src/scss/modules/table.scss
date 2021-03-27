@@ -43,7 +43,7 @@
     border-top: none;
     border-left: none;
     height: 100%;
-
+    cursor:pointer;
   }
 
   .cell{
@@ -57,7 +57,7 @@
     color: #111;
     white-space: nowrap;
     outline: none;
-
+    cursor: default;
   }
 
   & .selected{
