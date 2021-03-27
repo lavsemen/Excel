@@ -16,7 +16,6 @@ export class Excel {
       // if (component.name) {
       //   window[component.name] = component
       // }
-
       $el.html(component.toHtml())
       $root.append($el)
       return component
