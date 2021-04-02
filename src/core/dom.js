@@ -6,6 +6,14 @@ class Dom {
         : selector
   }
 
+  find(selector) {
+    return this.$el.querySelector(selector)
+  }
+
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector)
+  }
+
   html(html) {
     if (typeof html === 'string') {
       this.$el.innerHTML = html
@@ -13,7 +21,6 @@ class Dom {
     }
     return this.$el.outerHTML.trim()
   }
-
   clear() {
     this.html('')
     return this
@@ -31,6 +38,23 @@ class Dom {
     }
 
     return this
+  }
+
+  css(styles = {}) {
+    const keys = Object.keys(styles)
+    keys.forEach(key => this.$el.style[key] = styles[key])
+  }
+
+  get data() {
+    return this.$el.dataset
+  }
+
+  closest(selector) {
+    return $(this.$el.closest(selector))
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect()
   }
 
   on(event, callback) {
