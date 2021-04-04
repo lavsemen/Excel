@@ -5,8 +5,9 @@ export class ToolBar extends ExecelComponent {
 
   constructor($root, options) {
     super($root, {
+      name: 'ToolBar',
       listeners: ['click'],
-      name: 'ToolBar'
+      ...options
     })
   }
 

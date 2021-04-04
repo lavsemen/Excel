@@ -1,12 +1,15 @@
 import {ExecelComponent} from '@core/ExecelComponent'
+import {$} from '@core/dom'
+import {textEmitt} from './formula.func'
 
 export class Formula extends ExecelComponent {
   static className = 'excel__formula';
 
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
       name: 'Formula',
-      listeners: ['input', 'click']
+      listeners: ['input', 'keydown'],
+      ...options
     })
   }
 
@@ -14,20 +17,33 @@ export class Formula extends ExecelComponent {
     return `
     <div class="info">fx</div>
           
-    <div class="input" contenteditable spellcheck="false">
+    <div id="formula" class="input" contenteditable spellcheck="false">
 
     </div>
 
     `
   }
 
+  init() {
+    super.init()
+    this.$formula = this.$root.find('#formula')
+    const emitt = [
+      'Table:TextContent',
+      'Table:input',
+      'Table:Select'
+    ]
+    textEmitt.call(this, emitt)
+  }
   onInput(e) {
-    (this.$root)
-    console.log('Formula onInput', e.target.textContent.trim())
+    this.$emit('formula:input', $(e.target).text())
   }
 
-  onClick(e) {
-    console.log(this.$root)
-    console.log('Formula onClick', e.target.textContent.trim())
+  onKeydown(e) {
+    const keys = ['Enter', 'Tab']
+    const {key} = e
+    if (keys.includes(key)) {
+      e.preventDefault()
+      this.$emit('formula:done')
+    }
   }
 }
