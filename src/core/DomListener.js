@@ -1,4 +1,4 @@
-import {capitaloze} from './unils'
+import {capitaloze} from './utils'
 
 export class DomListener {
   constructor($root, listeners = []) {
@@ -12,7 +12,6 @@ export class DomListener {
   initDOMListeners() {
     this.listeners.forEach(listener => {
       const method = getMetodName(listener)
-      console.log(method)
 
       const name = this.name || ''
       if (!this[method]) {

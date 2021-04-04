@@ -30,7 +30,7 @@ const jsLoaders = () => {
 console.log('PROD', isProd)
 console.log('DEV', isDev)
 
-module.exports = {  
+module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: ['@babel/polyfill', './index.js'],
@@ -46,7 +46,7 @@ module.exports = {
     }
   },
   devtool: isDev? 'source-map' : false,
-  devServer:{
+  devServer: {
     port: 3000,
     hot: isDev
   },
@@ -89,4 +89,4 @@ module.exports = {
       }
     ],
   },
-};
+}

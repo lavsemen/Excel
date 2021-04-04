@@ -61,7 +61,7 @@ export function resizeTable(e, $root) {
     })
     if (type === 'col') {
       $perent.css({width: result})
-      cells.forEach(item => item.style.width = result)
+      cells.$el.forEach(item => item.style.width = result)
     } else {
       $perent.css({height: result})
     }
